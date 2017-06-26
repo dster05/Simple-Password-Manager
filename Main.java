@@ -8,7 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-public class Main  extends Application{
+
+import javax.swing.*;
+
+public class Main  extends Application implements EventHandler<ActionEvent>{
 
     Button button;
     public static void main(String[] args){
@@ -22,6 +25,7 @@ public class Main  extends Application{
         primaryStage.setTitle("Log In to password manager");
         button = new Button();
         button.setText("Click In");
+        button.setOnAction(this);//this says that when ever the button is clicked it will call the handle method
 
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
@@ -31,5 +35,11 @@ public class Main  extends Application{
         primaryStage.show();
     }
 
+    @Override
+    public void handle(ActionEvent event) {//when ever the button is clicked
+        if(event.getSource()==button){
+            System.out.println("Would you like to log in??");
+        }
 
+    }
 }
